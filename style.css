@@ -1,0 +1,283 @@
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #8CC461;
+  font-family: 'Roboto', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.scoreBoard {
+  border: 3px solid white;
+  padding: 20px 60px;
+  border-radius: 15px;
+  display: flex;
+  gap: 40px;
+}
+.Title {
+  color: rgb(255, 255, 255);
+  font-size: 38px;
+  font-weight: bold;
+ 
+text-align: left;
+margin-top: 8.9px;
+ 
+}
+
+.Scores {
+  display: flex;
+  gap: 20px;
+z-index: 0.6;
+ 
+}
+.ScoreBox {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10.1px;
+  color: #0d1e27;
+}
+
+.value {
+  font-size: 58px;
+  font-weight: bold;  }
+ 
+
+  .triangleWrapper {
+  position: relative;
+  width: 330px;
+  height: 320px;
+  margin: 50px auto 0;
+}
+
+/* option circles */
+.triangleWrapper .circle {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: white;
+  border: 10.8px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.triangleWrapper .circle img {
+  width: 60%;
+}
+
+/* triangle positions */
+.triangleWrapper .stone {
+  top: 0;
+  left: 0;
+  border-color: #0074B6;
+}
+
+.triangleWrapper .paper {
+  top: 0;
+  right: 0;
+  border-color: #FFA943;
+}
+
+.triangleWrapper .scissor {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: #BD00FF;
+}
+
+/* triangle lines */
+.triangleWrapper .line {
+  position: absolute;
+  height: 8px;
+  background: rgb(27, 20, 20);
+  border-radius: 4px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.triangleWrapper .line.base {
+  top: 50px;
+  left: 50px;
+  width: 270px;
+}
+
+.triangleWrapper .line.left {
+  top: 62px;
+  left: 62px;
+  width: 270px;
+  transform-origin: left center;
+  transform: rotate(61deg);
+}
+
+.triangleWrapper .line.right {
+  top: 62px;
+  right: 62px;
+  width: 180px;
+  transform-origin: right center;
+  transform: rotate(-61deg);
+}
+
+/*result area*/
+.resultArea {
+  display: none;
+ margin-top: 58.7px;
+
+}
+
+.picks {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.Option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Option p {
+  margin-bottom: 40px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* result circles */
+.resultArea .circle {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: white;
+  border:  10.9px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultArea .circle img {
+  width: 60%;
+}
+
+.resultArea .stone { border-color: #0074B6; }
+.resultArea .paper { border-color: #FFA943; }
+.resultArea .scissor { border-color: #BD00FF; }
+
+/* center result text */
+ .resultMiddle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 43px;
+}
+
+.resultText {
+  font-size: 43px;
+  font-weight: bold;
+  color: white;
+}
+
+.againstText {
+  font-size: 18px;
+  color: white;
+}
+
+.playBtn {
+  font-size: 13.5px;
+  padding: 10px 32px;
+  border-radius: 8.5px;
+  border: none;
+  cursor: pointer;
+  margin-top:23px;
+}
+ 
+ 
+ 
+.rules,
+.next {
+  position: fixed;
+  bottom: 20px;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+.rules { right: 20px; }
+.next { right: 120px; display: none; }
+
+/* Animation */
+  
+.circle{
+  position: relative;
+}
+  .circle.winner::before {
+  content: "";
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+  aspect-ratio: 1 / 1;
+
+  background-color: #0d770d;
+  border: 10px solid #94f194;
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+ 
+.circle.winner::after {
+  content: "";
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+  border: 3px solid #2cff2c;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+
+  animation: winPulse 1.2s ease-out infinite;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+ 
+@keyframes winPulse {
+  from {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}

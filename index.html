@@ -1,0 +1,87 @@
+   <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rock Paper Scissors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  
+  <div class="scoreBoard">
+    <div class="Title">
+      ROCK<br>
+      PAPER<br>
+      SCISSORS
+    </div>
+
+    <div class="Scores">
+      <div class="ScoreBox">
+        <div class="label">COMPUTER<br> SCORE</div>
+        <div class="value" id="pcScore">0</div>
+      </div>
+
+      <div class="ScoreBox">
+        <div class="label">YOUR <br>SCORE</div>
+        <div class="value" id="userScore">0</div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="triangleWrapper">
+ 
+    <div class="line base"></div>
+    <div class="line left"></div>
+    <div class="line right"></div>
+ 
+    <button class="circle stone" onclick="playGame('stone')">
+      <img src="assets/stone.png" alt="Stone">
+    </button>
+
+    <button class="circle paper" onclick="playGame('paper')">
+      <img src="assets/paper.png" alt="Paper">
+    </button>
+
+    <button class="circle scissor" onclick="playGame('scissor')">
+      <img src="assets/scissor.png" alt="Scissor">
+    </button>
+
+  </div>
+
+ 
+  <div class="resultArea">
+
+    <div class="picks">
+
+      <div class=" Option">
+        <p>YOU PICKED</p>
+        <div id="userPick" class="circle"></div>
+      </div>
+
+      <div class="resultMiddle">
+        <div id="resultText" class="resultText"></div>
+         <div id="againstText" class="againstText">AGAINST PC</div>
+        <button id="playAgainBtn" class="playBtn">PLAY AGAIN</button>
+      </div>
+
+      <div class=" Option">
+        <p>PC PICKED</p>
+        <div id="pcPick" class="circle"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<button id="nextBtn" class="next">NEXT</button>
+<button class="rules ">RULES</button>
+
+<script src="script.js"></script>
+</body>
+</html>
