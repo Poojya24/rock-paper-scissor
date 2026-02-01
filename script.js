@@ -43,7 +43,7 @@
 
   // OPEN rules
   rulesBtn.addEventListener("click", () => {
-    rulesBox.classList.toggle("show");
+    rulesBox.classList.add("show");
   });
 
   // CLOSE rules
@@ -114,10 +114,11 @@ function resetGameUI() {
 if (winnerPlayAgain) {
   winnerPlayAgain.onclick = resetGameUI;
 }
-  nextBtn.onclick = () => {
-    resultArea.style.display = "none";
-    winnerScreen.style.display = "flex";
-  };
+   nextBtn.onclick = () => {
+  triangle.style.display = "none";
+  resultArea.style.display = "none";
+  winnerScreen.style.display = "flex";
+};
 
    
  
