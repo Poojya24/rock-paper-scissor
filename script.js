@@ -43,10 +43,8 @@ const choices = ["stone", "paper", "scissor"];
 
   document.body.appendChild(rulesBox);
 
-  // OPEN rules
-  rulesBtn.addEventListener("click", () => {
-    rulesBox.classList.toggle("show");
-  });
+ 
+ 
 
   // CLOSE rules
   rulesBox.querySelector(".rulesCloseBtn")
@@ -58,6 +56,11 @@ if (rulesBtn) {
     rulesBox.classList.toggle("show");
   });
 }
+
+rulesBox.querySelector(".rulesCloseBtn")
+  .addEventListener("click", () => {
+    rulesBox.classList.remove("show");
+  });
 
   //game 
     window.playGame = function (userChoice) {
