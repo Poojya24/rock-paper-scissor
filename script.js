@@ -30,15 +30,31 @@ nextBtn.style.display = "none";
 
 //rules box
 const rulesBtn = document.querySelector(".rules");
+
 const rulesBox = document.createElement("div");
-rulesBox.innerHTML = `<img src="assets/rule.png" width="220">`;
+rulesBox.innerHTML = `
+  <button class="closrbtn">X</button>
+  <img src="assets/rule.png" width="220">
+`;
+
 rulesBox.style.cssText =
   "display:none; position:fixed; right:20px; bottom:80px;";
+
 document.body.appendChild(rulesBox);
+
+
+const closeBtn = rulesBox.querySelector(".closebtn");
+
+
+closeBtn.onclick = () => {
+  rulesBox.style.display = "none";
+};
+
 
 rulesBtn.onclick = () => {
   rulesBox.style.display =
     rulesBox.style.display === "none" ? "block" : "none";
+};
 };
 
 //game steps
