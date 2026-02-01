@@ -8,28 +8,28 @@
     : 0;
 
   // elements
-  const triangle = document.querySelector(".triangleWrapper");
-  const resultArea = document.querySelector(".resultArea");
-  const userPick = document.getElementById("userPick");
-  const pcPick = document.getElementById("pcPick");
-  const resultText = document.getElementById("resultText");
-  const playAgainBtn = document.getElementById("playAgainBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const userScoreEl = document.getElementById("userScore");
-  const pcScoreEl = document.getElementById("pcScore");
-  const winnerScreen = document.getElementById("winnerScreen");
-  const winnerPlayAgain = document.getElementById("winnerPlayAgain");
-  const rulesBtn = document.querySelector(".rules");
+ const triangle = document.querySelector(".triangleWrapper");
+const resultArea = document.querySelector(".resultArea");
+const userPick = document.getElementById("userPick");
+const pcPick = document.getElementById("pcPick");
+const resultText = document.getElementById("resultText");
+const playAgainBtn = document.getElementById("playAgainBtn");
+const nextBtn = document.getElementById("nextBtn");
+const userScoreEl = document.getElementById("userScore");
+const pcScoreEl = document.getElementById("pcScore");
+const winnerScreen = document.getElementById("winnerScreen");
+const winnerPlayAgain = document.getElementById("winnerPlayAgain");
+const rulesBtn = document.querySelector(".rules");
 
    
-  userScoreEl.innerText = userScore;
-  pcScoreEl.innerText = pcScore;
+ 
+ if (userScoreEl) userScoreEl.innerText = userScore;
+if (pcScoreEl) pcScoreEl.innerText = pcScore;
 
-  triangle.style.display = "flex";
-  resultArea.style.display = "none";
-  winnerScreen.style.display = "none";
-  nextBtn.style.display = "none";
-
+if (triangle) triangle.style.display = "flex";
+if (resultArea) resultArea.style.display = "none";
+if (winnerScreen) winnerScreen.style.display = "none";
+if (nextBtn) nextBtn.style.display = "none";
   // rule
   const rulesBox = document.createElement("div");
   rulesBox.classList.add("rulesBox");
@@ -119,8 +119,6 @@ if (winnerPlayAgain) {
  nextBtn.onclick = () => {
   resultArea.style.display = "none";
   winnerScreen.style.display = "flex";
+  nextBtn.style.display = "none"; 
 
-  
-  nextBtn.style.display = "none";
-};
   
