@@ -315,4 +315,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
+
+.rules {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1100; /* higher than winner screen */
+}
+
