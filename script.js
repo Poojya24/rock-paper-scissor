@@ -114,12 +114,17 @@
   };
 
   if (winnerPlayAgain) {
-    winnerPlayAgain.onclick = () => {
-      winnerScreen.style.display = "none";
-      triangle.style.display = "flex";
-      userPick.classList.remove("winner");
-    };
-  }
+  winnerPlayAgain.onclick = () => {
+ 
+    winnerScreen.style.display = "none";
+ 
+    resultArea.style.display = "none";
+    triangle.style.display = "flex";
 
-  
+ 
+    userPick.classList.remove("winner");
+ 
+    nextBtn.style.display = "none";
+  };
+}
   
