@@ -1,21 +1,23 @@
-  * {
+ 
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/*body*/
 body {
   background: #8CC461;
   font-family: 'Roboto', Arial, sans-serif;
   display: flex;
   justify-content: center;
 }
-
+ 
 .page {
   margin-top: 40px;
   text-align: center;
 }
-
+ 
 .scoreBoard {
   border: 3px solid white;
   padding: 20px 60px;
@@ -23,49 +25,46 @@ body {
   display: flex;
   gap: 40px;
 }
+
 .Title {
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 38px;
   font-weight: bold;
- 
-text-align: left;
-margin-top: 8.9px;
- 
+  text-align: left;
 }
 
 .Scores {
   display: flex;
   gap: 20px;
-z-index: 0.6;
- 
 }
+
 .ScoreBox {
   background: white;
   padding: 20px 30px;
-  border-radius: 10.1px;
+  border-radius: 10px;
   color: #0d1e27;
 }
 
 .value {
   font-size: 58px;
-  font-weight: bold;  }
- 
+  font-weight: bold;
+}
 
-  .triangleWrapper {
+/* TRIANGLE AREA */
+.triangleWrapper {
   position: relative;
   width: 330px;
   height: 320px;
   margin: 50px auto 0;
 }
 
-/* option circles */
 .triangleWrapper .circle {
   position: absolute;
   width: 125px;
   height: 125px;
   border-radius: 50%;
   background: white;
-  border: 10.8px solid;
+  border: 10px solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,11 +72,10 @@ z-index: 0.6;
   z-index: 2;
 }
 
-.triangleWrapper .circle img {
+.triangleWrapper img {
   width: 60%;
 }
 
-/* triangles  */
 .triangleWrapper .stone {
   top: 0;
   left: 0;
@@ -97,43 +95,41 @@ z-index: 0.6;
   border-color: #BD00FF;
 }
 
-/*triangle lines */
+/* TRIANGLE LINES */
 .triangleWrapper .line {
   position: absolute;
   height: 8px;
-  background: rgb(27, 20, 20);
+  background: #1b1414;
   border-radius: 4px;
   z-index: 1;
-  pointer-events: none;
 }
 
-.triangleWrapper .line.base {
+.line.base {
   top: 50px;
   left: 50px;
   width: 270px;
 }
 
-.triangleWrapper .line.left {
+.line.left {
   top: 62px;
   left: 62px;
   width: 270px;
-  transform-origin: left center;
   transform: rotate(61deg);
+  transform-origin: left;
 }
 
-.triangleWrapper .line.right {
+.line.right {
   top: 62px;
   right: 62px;
   width: 180px;
-  transform-origin: right center;
   transform: rotate(-61deg);
+  transform-origin: right;
 }
 
-/*results*/
+/* RESULT AREA */
 .resultArea {
   display: none;
- margin-top: 58.7px;
-
+  margin-top: 60px;
 }
 
 .picks {
@@ -144,7 +140,6 @@ z-index: 0.6;
 }
 
 .Option {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,33 +153,26 @@ z-index: 0.6;
   letter-spacing: 2px;
 }
 
-/* result circles */
 .resultArea .circle {
   width: 125px;
   height: 125px;
   border-radius: 50%;
   background: white;
-  border:  10.9px solid;
+  border: 10px solid;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.resultArea .circle img {
+.resultArea img {
   width: 60%;
 }
 
-.resultArea .stone { border-color: #0074B6; }
-.resultArea .paper { border-color: #FFA943; }
-.resultArea .scissor { border-color: #BD00FF; }
-
- 
- .resultMiddle {
+.resultMiddle {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 43px;
 }
 
 .resultText {
@@ -197,96 +185,89 @@ z-index: 0.6;
   font-size: 18px;
   color: white;
 }
-
-.playBtn , .winnerPlayAgain{
-  font-size: 13.5px;
-  padding: 10px 32px;
-  border-radius: 8.5px;
+ 
+.playBtn,
+#winnerPlayAgain {
+  font-size: 14px;
+  padding: 12px 36px;
+  border-radius: 9px;
   border: none;
   cursor: pointer;
-  margin-top:23px;
+  margin-top: 25px;
 }
+
  
- 
- 
- .rules {
+.rules {
   position: fixed;
   right: 20px;
   bottom: 20px;
-
   background: transparent;
   color: white;
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
-
-  z-index:1050;  
+  z-index: 1100;
 }
 
 .next {
   position: fixed;
   bottom: 20px;
+  right: 120px;
   background: transparent;
   color: white;
   border: 2px solid white;
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
-  z-index: 10;
+  display: none;
+  z-index: 1100;
 }
-  
-.next { right: 120px; display: none; }
 
- 
-.circle{
+/*animation */
+.circle {
   position: relative;
 }
-  .circle.winner::before {
+
+.circle.winner::before {
   content: "";
   position: absolute;
-
   width: 170px;
   height: 170px;
-  aspect-ratio: 1 / 1;
-
-  background-color: #0d770d;
+  background: #0d770d;
   border: 10px solid #94f194;
   border-radius: 50%;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  pointer-events: none;
   z-index: -1;
 }
 
- 
 .circle.winner::after {
   content: "";
   position: absolute;
-
   width: 130px;
   height: 130px;
-  aspect-ratio: 1 / 1;
-
   border-radius: 50%;
   border: 3px solid #2cff2c;
-
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
-
+  transform: translate(-50%, -50%);
   animation: winPulse 1.2s ease-out infinite;
-  pointer-events: none;
-  box-sizing: border-box;
+ 
+@keyframes winPulse {
+  from {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
 }
 
- 
- 
-
- .winnerScreen {
+/* hurray*/
+.winnerScreen {
   position: fixed;
   inset: 0;
   background: #8CC461;
@@ -294,91 +275,63 @@ z-index: 0.6;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  z-index: 1000;  
   text-align: center;
+  z-index: 1000;
 }
- 
+
 .starsImage {
   width: 540px;
-   margin-bottom: -125px;
+  margin-bottom: -120px;
 }
 
- 
 .trophy {
   width: 190px;
   margin-bottom: 35px;
 }
 
-/* HURRAY text */
 .hurrayText {
   font-size: 90px;
   font-weight: 800;
   color: white;
-  letter-spacing: 6px;
-  margin-bottom: 10px;
 }
 
- 
 .winSubText {
   font-size: 41px;
   font-weight: 600;
   color: white;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
- 
-
-  .rulesBox {
+/*rule */
+.rulesBox {
   position: fixed;
   right: 20px;
   bottom: 80px;
   display: none;
-  z-index: 200;
+  z-index: 1050;
 }
 
 .rulesBox.show {
   display: block;
 }
 
- .rulesCloseBtn {
+.rulesCloseBtn {
   position: absolute;
-  top: -4px;
+  top: -5px;
   right: -5px;
-
   width: 50px;
   height: 50px;
-
-  background-color: red;
+  background: red;
   color: white;
-
   border: 2.5px solid white;
   border-radius: 50%;
-
   font-size: 22px;
-  font-weight: bold;
-
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  box-shadow: none;
-  outline: none;
-
-  z-index: 10;
-}
-.rules {
-  z-index: 1100;
 }
 
-.winnerScreen {
-  z-index: 1000;
+.rulesBox img {
+  pointer-events: none;
 }
-
-.rulesBox {
-  z-index: 1050;
-}
-
