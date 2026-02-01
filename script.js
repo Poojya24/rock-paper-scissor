@@ -32,30 +32,28 @@ const choices = ["stone", "paper", "scissor"];
   winnerScreen.style.display = "none";
   nextBtn.style.display = "none";
 
-  // rule
-  const rulesBox = document.createElement("div");
-  rulesBox.classList.add("rulesBox");
+  // rule  all
+const rulesBox = document.createElement("div");
+rulesBox.classList.add("rulesBox");
 
-  rulesBox.innerHTML = `
-    <button class="rulesCloseBtn">✕</button>
-    <img src="assets/rule.png" width="220" alt="Rules">
-  `;
+rulesBox.innerHTML = `
+  <button class="rulesCloseBtn">✕</button>
+  <img src="assets/rule.png" width="220" alt="Rules">
+`;
 
-  document.body.appendChild(rulesBox);
+document.body.appendChild(rulesBox);
 
- 
- 
-
-  // CLOSE rules
-  rulesBox.querySelector(".rulesCloseBtn")
-    .addEventListener("click", () => {
-      rulesBox.classList.remove("show");
-    });
 if (rulesBtn) {
   rulesBtn.addEventListener("click", () => {
     rulesBox.classList.toggle("show");
   });
 }
+
+rulesBox.querySelector(".rulesCloseBtn")
+  .addEventListener("click", () => {
+    rulesBox.classList.remove("show");
+  });
+  
 
 
   //game 
