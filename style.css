@@ -228,22 +228,7 @@ body {
 .circle {
   position: relative;
 }
-
-.circle.winner::before {
-  content: "";
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  background: #0d770d;
-  border: 10px solid #94f194;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.circle.winner::after {
+ .circle.winner::after {
   content: "";
   position: absolute;
   width: 130px;
@@ -252,9 +237,12 @@ body {
   border: 3px solid #2cff2c;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.7);
   animation: winPulse 1.2s ease-out infinite;
- 
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
 @keyframes winPulse {
   from {
     transform: translate(-50%, -50%) scale(0.7);
