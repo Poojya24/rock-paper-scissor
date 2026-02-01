@@ -1,4 +1,4 @@
- * {
+  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -198,7 +198,7 @@ z-index: 0.6;
   color: white;
 }
 
-.playBtn {
+.playBtn , .winnerPlayAgain{
   font-size: 13.5px;
   padding: 10px 32px;
   border-radius: 8.5px;
@@ -286,7 +286,7 @@ z-index: 0.6;
  
  
 
-.winnerScreen {
+ .winnerScreen {
   position: fixed;
   inset: 0;
   background: #8CC461;
@@ -294,7 +294,8 @@ z-index: 0.6;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 20;
+
+  z-index: 1000;  
   text-align: center;
 }
  
