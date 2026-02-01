@@ -1,12 +1,8 @@
  const choices = ["stone", "paper", "scissor"];
 
-let userScore = localStorage.getItem("userScore")
-  ? Number(localStorage.getItem("userScore"))
-  : 0;
-
-let pcScore = localStorage.getItem("pcScore")
-  ? Number(localStorage.getItem("pcScore"))
-  : 0;
+// scores
+let userScore = Number(localStorage.getItem("userScore")) || 0;
+let pcScore = Number(localStorage.getItem("pcScore")) || 0;
 
 // elements
 const triangle = document.querySelector(".triangleWrapper");
@@ -21,6 +17,7 @@ const pcScoreEl = document.getElementById("pcScore");
 const winnerScreen = document.getElementById("winnerScreen");
 const winnerPlayAgain = document.getElementById("winnerPlayAgain");
 const rulesBtn = document.querySelector(".rules");
+
  
 userScoreEl.innerText = userScore;
 pcScoreEl.innerText = pcScore;
@@ -31,41 +28,37 @@ winnerScreen.style.display = "none";
 nextBtn.style.display = "none";
  
 const rulesBox = document.createElement("div");
-rulesBox.classList.add("rulesBox");
-
+rulesBox.className = "rulesBox";
 rulesBox.innerHTML = `
   <button class="rulesCloseBtn">✕</button>
   <img src="assets/rule.png" width="220" alt="Rules">
 `;
-
 document.body.appendChild(rulesBox);
 
- 
-rulesBtn.addEventListener("click", () => {
+rulesBtn.onclick = () => {
   rulesBox.classList.add("show");
-});
+};
 
- 
-rulesBox.querySelector(".rulesCloseBtn").addEventListener("click", () => {
+rulesBox.querySelector(".rulesCloseBtn").onclick = () => {
   rulesBox.classList.remove("show");
-});
+};
 
 //game
 window.playGame = function (userChoice) {
   const pcChoice = choices[Math.floor(Math.random() * choices.length)];
+
+  // reset
+  nextBtn.style.display = "none";
+  userPick.classList.remove("winner");
 
   triangle.style.display = "none";
   resultArea.style.display = "block";
 
   userPick.className = `circle ${userChoice}`;
   pcPick.className = `circle ${pcChoice}`;
-  userPick.classList.remove("winner");
 
   userPick.innerHTML = `<img src="assets/${userChoice}.png">`;
   pcPick.innerHTML = `<img src="assets/${pcChoice}.png">`;
-
-  playAgainBtn.style.display = "block";
-  nextBtn.style.display = "none";
 
   // TIE
   if (userChoice === pcChoice) {
@@ -79,7 +72,6 @@ window.playGame = function (userChoice) {
     (userChoice === "paper" && pcChoice === "stone") ||
     (userChoice === "scissor" && pcChoice === "paper");
 
-  // WIN
   if (userWins) {
     resultText.innerText = "YOU WIN";
 
@@ -89,10 +81,7 @@ window.playGame = function (userChoice) {
 
     userPick.classList.add("winner");
     playAgainBtn.innerText = "PLAY AGAIN";
-    nextBtn.style.display = "block"; // ✅ ONLY HERE
-  }
-  // LOSE
-  else {
+    nextBtn.style.display = "block"; 
     resultText.innerText = "YOU LOST";
 
     pcScore++;
@@ -102,6 +91,7 @@ window.playGame = function (userChoice) {
     playAgainBtn.innerText = "PLAY AGAIN";
   }
 };
+
  
 function resetGameUI() {
   winnerScreen.style.display = "none";
@@ -110,18 +100,16 @@ function resetGameUI() {
 
   userPick.classList.remove("winner");
   nextBtn.style.display = "none";
+  rulesBox.classList.remove("show");
 }
 
-// buttons
 playAgainBtn.onclick = resetGameUI;
-
-if (winnerPlayAgain) {
-  winnerPlayAgain.onclick = resetGameUI;
-}
+winnerPlayAgain.onclick = resetGameUI;
 
  
 nextBtn.onclick = () => {
   resultArea.style.display = "none";
   winnerScreen.style.display = "flex";
-  nextBtn.style.display = "none"; // ❌ no next on hurray
+  nextBtn.style.display = "none";
+  rulesBox.classList.remove("show");
 };
