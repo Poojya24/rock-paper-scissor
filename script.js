@@ -53,6 +53,11 @@ const choices = ["stone", "paper", "scissor"];
     .addEventListener("click", () => {
       rulesBox.classList.remove("show");
     });
+if (rulesBtn) {
+  rulesBtn.addEventListener("click", () => {
+    rulesBox.classList.toggle("show");
+  });
+}
 
   //game 
     window.playGame = function (userChoice) {
