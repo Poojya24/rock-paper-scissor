@@ -41,16 +41,17 @@
 
   document.body.appendChild(rulesBox);
 
-  // OPEN rules
+  if (rulesBtn) {
   rulesBtn.addEventListener("click", () => {
     rulesBox.classList.add("show");
   });
+}
 
-  // CLOSE rules
-  rulesBox.querySelector(".rulesCloseBtn")
-    .addEventListener("click", () => {
-      rulesBox.classList.remove("show");
-    });
+ 
+rulesBox.querySelector(".rulesCloseBtn")
+  .addEventListener("click", () => {
+    rulesBox.classList.remove("show");
+  });
 
   //game 
     window.playGame = function (userChoice) {
