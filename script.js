@@ -1,4 +1,6 @@
- const choices = ["stone", "paper", "scissor"];
+  
+  
+const choices = ["stone", "paper", "scissor"];
    let userScore = localStorage.getItem("userScore")
     ? Number(localStorage.getItem("userScore"))
     : 0;
@@ -100,31 +102,25 @@
     playAgainBtn.innerText = "PLAY AGAIN";
   }
 };
+function resetGameUI() {
+  winnerScreen.style.display = "none";
+  resultArea.style.display = "none";
+  triangle.style.display = "flex";
 
+  userPick.classList.remove("winner");
+  nextBtn.style.display = "none";
+}
   //buttons
-  playAgainBtn.onclick = () => {
-    resultArea.style.display = "none";
-    triangle.style.display = "flex";
-    userPick.classList.remove("winner");
-  };
+  playAgainBtn.onclick = resetGameUI;
 
+if (winnerPlayAgain) {
+  winnerPlayAgain.onclick = resetGameUI;
+}
   nextBtn.onclick = () => {
     resultArea.style.display = "none";
     winnerScreen.style.display = "flex";
   };
 
-  if (winnerPlayAgain) {
-  winnerPlayAgain.onclick = () => {
+   
  
-    winnerScreen.style.display = "none";
- 
-    resultArea.style.display = "none";
-    triangle.style.display = "flex";
-
- 
-    userPick.classList.remove("winner");
- 
-    nextBtn.style.display = "none";
-  };
-}
   
