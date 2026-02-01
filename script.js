@@ -114,13 +114,6 @@ function resetGameUI() {
 
 if (winnerPlayAgain) {
   winnerPlayAgain.onclick = resetGameUI;
-}
-   nextBtn.onclick = () => {
-  triangle.style.display = "none";
-  resultArea.style.display = "none";
-  winnerScreen.style.display = "flex";
-};
-
-   
+} 
  
   
