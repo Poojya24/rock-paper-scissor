@@ -1,4 +1,4 @@
-   <html lang="en">
+  <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Rock Paper Scissors</title>
@@ -38,52 +38,60 @@
     <div class="line left"></div>
     <div class="line right"></div>
  
-    <button class="circle stone" onclick="playGame('stone')">
-      <img src="assets/stone.png" alt="Stone">
-    </button>
+    <div class="circle stone" onclick="playGame('stone')">
+  <img src="assets/stone.png">
+</div>
 
-    <button class="circle paper" onclick="playGame('paper')">
-      <img src="assets/paper.png" alt="Paper">
-    </button>
+<div class="circle paper" onclick="playGame('paper')">
+  <img src="assets/paper.png">
+</div>
 
-    <button class="circle scissor" onclick="playGame('scissor')">
-      <img src="assets/scissor.png" alt="Scissor">
-    </button>
-
+<div class="circle scissor" onclick="playGame('scissor')">
+  <img src="assets/scissor.png">
+</div>
+ 
   </div>
 
  
-  <div class="resultArea">
+   <div class="resultArea">
 
-    <div class="picks">
+  <div class="picks">
 
-      <div class=" Option">
-        <p>YOU PICKED</p>
-        <div id="userPick" class="circle"></div>
-      </div>
+    <div class="Option">
+      <p>YOU PICKED</p>
+      <div id="userPick" class="circle"></div>
+    </div>
 
-      <div class="resultMiddle">
-        <div id="resultText" class="resultText"></div>
-         <div id="againstText" class="againstText">AGAINST PC</div>
-        <button id="playAgainBtn" class="playBtn">PLAY AGAIN</button>
-      </div>
+    <div class="resultMiddle">
+      <div id="resultText" class="resultText"></div>
+      <div class="againstText">AGAINST PC</div>
+      <button id="playAgainBtn" class="playBtn">PLAY AGAIN</button>
+    </div>
 
-      <div class=" Option">
-        <p>PC PICKED</p>
-        <div id="pcPick" class="circle"></div>
-      </div>
-
+    <div class="Option">
+      <p>PC PICKED</p>
+      <div id="pcPick" class="circle"></div>
     </div>
 
   </div>
 
 </div>
+ 
+<div class="winnerScreen" id="winnerScreen" style="display:none;">
+  <img src="assets/Group 5.png" class="starsImage">
+  <img src="assets/trophy.png" class="trophy">
+
+  <h1 class="hurrayText">HURRAY!!</h1>
+  <p class="winSubText">YOU WON THE GAME</p>
+
+  <button class="playBtn">PLAY AGAIN</button>
+</div>
+ 
+  </div>
+
+</div>
 
 <button id="nextBtn" class="next">NEXT</button>
-   <div id="rulesBox">
-  <button class="closrbtn">X</button>
-  <img src="assets/rule.png" width="220" />
-</div>
 <button class="rules ">RULES</button>
 
 <script src="script.js"></script>
