@@ -359,3 +359,41 @@ z-index: 0.6;
 
   z-index: 10;
 }
+.circle {
+  position: relative;
+}
+
+/* pulse ring */
+.circle.winner::after {
+  content: "";
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+
+  border: 4px solid #2cff2c;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+
+  animation: winPulse 1.2s ease-out infinite;
+  pointer-events: none;
+
+  /* IMPORTANT: keep ring behind the circle */
+  z-index: -1;
+}
+
+/* pulse animation */
+@keyframes winPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
