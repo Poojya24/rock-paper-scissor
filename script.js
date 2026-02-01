@@ -1,73 +1,67 @@
-   const choices = ["stone", "paper", "scissor"];
+ const choices = ["stone", "paper", "scissor"];
+   let userScore = localStorage.getItem("userScore")
+    ? Number(localStorage.getItem("userScore"))
+    : 0;
 
-const againstText = document.getElementById("againstText");
+  let pcScore = localStorage.getItem("pcScore")
+    ? Number(localStorage.getItem("pcScore"))
+    : 0;
 
-// local storage scores
-let userScore = localStorage.getItem("userScore")
-  ? Number(localStorage.getItem("userScore"))
-  : 0;
+  // elements
+  const triangle = document.querySelector(".triangleWrapper");
+  const resultArea = document.querySelector(".resultArea");
+  const userPick = document.getElementById("userPick");
+  const pcPick = document.getElementById("pcPick");
+  const resultText = document.getElementById("resultText");
+  const playAgainBtn = document.getElementById("playAgainBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const userScoreEl = document.getElementById("userScore");
+  const pcScoreEl = document.getElementById("pcScore");
+  const winnerScreen = document.getElementById("winnerScreen");
+  const winnerPlayAgain = document.getElementById("winnerPlayAgain");
+  const rulesBtn = document.querySelector(".rules");
 
-let pcScore = localStorage.getItem("pcScore")
-  ? Number(localStorage.getItem("pcScore"))
-  : 0;
+   
+  userScoreEl.innerText = userScore;
+  pcScoreEl.innerText = pcScore;
 
-// elements
-const triangle = document.querySelector(".triangleWrapper");
-const resultArea = document.querySelector(".resultArea");
-const userPick = document.getElementById("userPick");
-const pcPick = document.getElementById("pcPick");
-const resultText = document.getElementById("resultText");
-const playAgainBtn = document.getElementById("playAgainBtn");
-const nextBtn = document.getElementById("nextBtn");
-const userScoreEl = document.getElementById("userScore");
-const pcScoreEl = document.getElementById("pcScore");
+  triangle.style.display = "flex";
+  resultArea.style.display = "none";
+  winnerScreen.style.display = "none";
+  nextBtn.style.display = "none";
 
-// initial UI
-userScoreEl.innerText = userScore;
-pcScoreEl.innerText = pcScore;
+  // rule
+  const rulesBox = document.createElement("div");
+  rulesBox.classList.add("rulesBox");
 
-triangle.style.display = "flex";
-resultArea.style.display = "none";
-nextBtn.style.display = "none";
+  rulesBox.innerHTML = `
+    <button class="rulesCloseBtn">✕</button>
+    <img src="assets/rule.png" width="220" alt="Rules">
+  `;
 
-// =rules box
-const rulesBtn = document.querySelector(".rules");
+  document.body.appendChild(rulesBox);
 
-const rulesBox = document.createElement("div");
-rulesBox.innerHTML = `
-  <button class="closrbtn">X</button>
-  <img src="assets/rule.png" width="220">
-`;
+  // OPEN rules
+  rulesBtn.addEventListener("click", () => {
+    rulesBox.classList.toggle("show");
+  });
 
-rulesBox.style.cssText =
-  "display:none; position:fixed; right:20px; bottom:80px;";
+  // CLOSE rules
+  rulesBox.querySelector(".rulesCloseBtn")
+    .addEventListener("click", () => {
+      rulesBox.classList.remove("show");
+    });
 
-document.body.appendChild(rulesBox);
-
-// cose btn
-const closeBtn = rulesBox.querySelector(".closrbtn");
-
-closeBtn.onclick = () => {
-  rulesBox.style.display = "none";
-};
-
-rulesBtn.onclick = () => {
-  rulesBox.style.display =
-    rulesBox.style.display === "none" ? "block" : "none";
-};
-
-function playGame(userChoice) {
-  const pcChoice = choices[Math.floor(Math.random() * 3)];
+  //game 
+    window.playGame = function (userChoice) {
+  const pcChoice = choices[Math.floor(Math.random() * choices.length)];
 
   triangle.style.display = "none";
   resultArea.style.display = "block";
 
-  // reset
-  userPick.classList.remove("winner");
-  pcPick.classList.remove("winner");
-
   userPick.className = `circle ${userChoice}`;
   pcPick.className = `circle ${pcChoice}`;
+  userPick.classList.remove("winner");
 
   userPick.innerHTML = `<img src="assets/${userChoice}.png">`;
   pcPick.innerHTML = `<img src="assets/${pcChoice}.png">`;
@@ -75,7 +69,6 @@ function playGame(userChoice) {
   nextBtn.style.display = "none";
   playAgainBtn.style.display = "block";
 
-  // TIE
   if (userChoice === pcChoice) {
     resultText.innerText = "TIE UP";
     playAgainBtn.innerText = "REPLAY";
@@ -94,10 +87,9 @@ function playGame(userChoice) {
     userScoreEl.innerText = userScore;
     localStorage.setItem("userScore", userScore);
 
+    userPick.classList.add("winner");
     playAgainBtn.innerText = "PLAY AGAIN";
     nextBtn.style.display = "block";
-
-    userPick.classList.add("winner");
   } else {
     resultText.innerText = "YOU LOST";
 
@@ -107,18 +99,27 @@ function playGame(userChoice) {
 
     playAgainBtn.innerText = "PLAY AGAIN";
   }
-}
-
-
-playAgainBtn.onclick = () => {
-  userPick.classList.remove("winner");
-  pcPick.classList.remove("winner");
-
-  resultArea.style.display = "none";
-  triangle.style.display = "flex";
 };
 
-nextBtn.onclick = () => {
-  userPick.classList.remove("winner");
-  alert("NEXT clicked");
-};
+  //buttons
+  playAgainBtn.onclick = () => {
+    resultArea.style.display = "none";
+    triangle.style.display = "flex";
+    userPick.classList.remove("winner");
+  };
+
+  nextBtn.onclick = () => {
+    resultArea.style.display = "none";
+    winnerScreen.style.display = "flex";
+  };
+
+  if (winnerPlayAgain) {
+    winnerPlayAgain.onclick = () => {
+      winnerScreen.style.display = "none";
+      triangle.style.display = "flex";
+      userPick.classList.remove("winner");
+    };
+  }
+
+  
+  
