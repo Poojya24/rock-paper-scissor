@@ -25,7 +25,7 @@ if (resultArea) resultArea.style.display = "none";
 if (winnerScreen) winnerScreen.style.display = "none";
 if (nextBtn) nextBtn.style.display = "none";
 
-/* RULES */
+ 
 const rulesBox = document.createElement("div");
 rulesBox.className = "rulesBox";
 rulesBox.innerHTML = `
@@ -41,30 +41,27 @@ if (rulesBtn) {
 rulesBox.querySelector(".rulesCloseBtn").onclick = () =>
   rulesBox.classList.remove("show");
 
-/* GAME */
-window.playGame = function (userChoice) {
+//game
+ window.playGame = function (userChoice) {
   const pcChoice = choices[Math.floor(Math.random() * choices.length)];
 
-  if (triangle) triangle.style.display = "none";
-  if (resultArea) resultArea.style.display = "block";
+  triangle.style.display = "none";
+  resultArea.style.display = "block";
 
-  if (userPick) {
-    userPick.className = `circle ${userChoice}`;
-    userPick.innerHTML = `<img src="assets/${userChoice}.png">`;
-    userPick.classList.remove("winner");
-  }
+  userPick.className = `circle ${userChoice}`;
+  pcPick.className = `circle ${pcChoice}`;
+  userPick.classList.remove("winner");
 
-  if (pcPick) {
-    pcPick.className = `circle ${pcChoice}`;
-    pcPick.innerHTML = `<img src="assets/${pcChoice}.png">`;
-  }
+  userPick.innerHTML = `<img src="assets/${userChoice}.png">`;
+  pcPick.innerHTML = `<img src="assets/${pcChoice}.png">`;
 
-  if (nextBtn) nextBtn.style.display = "none";
-  if (playAgainBtn) playAgainBtn.style.display = "block";
+  playAgainBtn.style.display = "block";
+  nextBtn.style.display = "none";
 
+  // TIE
   if (userChoice === pcChoice) {
-    if (resultText) resultText.innerText = "TIE UP";
-    if (playAgainBtn) playAgainBtn.innerText = "REPLAY";
+    resultText.innerText = "TIE UP";
+    playAgainBtn.innerText = "REPLAY";
     return;
   }
 
@@ -73,22 +70,30 @@ window.playGame = function (userChoice) {
     (userChoice === "paper" && pcChoice === "stone") ||
     (userChoice === "scissor" && pcChoice === "paper");
 
+  // WIN
   if (userWins) {
-    if (resultText) resultText.innerText = "YOU WIN";
+    resultText.innerText = "YOU WIN";
+
     userScore++;
+    userScoreEl.innerText = userScore;
     localStorage.setItem("userScore", userScore);
-    if (userScoreEl) userScoreEl.innerText = userScore;
-    if (userPick) userPick.classList.add("winner");
-    if (nextBtn) nextBtn.style.display = "block";
-  } else {
-    if (resultText) resultText.innerText = "YOU LOST";
+
+    userPick.classList.add("winner");
+    playAgainBtn.innerText = "PLAY AGAIN";
+    nextBtn.style.display = "block";  
+  }
+  // LOSE
+  else {
+    resultText.innerText = "YOU LOST";
+
     pcScore++;
+    pcScoreEl.innerText = pcScore;
     localStorage.setItem("pcScore", pcScore);
-    if (pcScoreEl) pcScoreEl.innerText = pcScore;
+
+    playAgainBtn.innerText = "PLAY AGAIN";
   }
 };
-
-/* RESET */
+ 
 function resetGameUI() {
   if (winnerScreen) winnerScreen.style.display = "none";
   if (resultArea) resultArea.style.display = "none";
