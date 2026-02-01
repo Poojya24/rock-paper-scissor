@@ -57,10 +57,6 @@ if (rulesBtn) {
   });
 }
 
-rulesBox.querySelector(".rulesCloseBtn")
-  .addEventListener("click", () => {
-    rulesBox.classList.remove("show");
-  });
 
   //game 
     window.playGame = function (userChoice) {
