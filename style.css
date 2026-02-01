@@ -221,7 +221,7 @@ z-index: 0.6;
   border-radius: 6px;
   cursor: pointer;
 
-  z-index: 999;  
+  z-index:1050;  
 }
 
 .next {
