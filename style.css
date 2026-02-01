@@ -370,3 +370,15 @@ z-index: 0.6;
 
   z-index: 10;
 }
+.rules {
+  z-index: 1100;
+}
+
+.winnerScreen {
+  z-index: 1000;
+}
+
+.rulesBox {
+  z-index: 1050;
+}
+
